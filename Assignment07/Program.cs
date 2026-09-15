@@ -1,4 +1,6 @@
-﻿namespace Assignment07
+﻿using Assignment07.Entities;
+
+namespace Assignment07
 {
     internal class Program
     {
@@ -25,6 +27,25 @@
 
             // d) Inheritance allows us to reuse the same properties and methods
             // without duplicating the code in multiple classes
+
+            #endregion
+            #region Question 3
+
+            DeliveryAddress address =
+                new DeliveryAddress("Cairo", "Tahrir Street", 15);
+
+            Shipment shipment =
+                new Shipment("SH-101", "Laptop", 3, 100, address);
+
+            shipment.PrintShipment();
+
+            Console.WriteLine();
+
+            shipment.UpdateDeliveryFee(120);
+
+            Console.WriteLine("After updating delivery fee:");
+
+            shipment.PrintShipment();
 
             #endregion
         }
