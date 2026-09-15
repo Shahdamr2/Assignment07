@@ -1,4 +1,5 @@
 ﻿using Assignment07.Entities;
+using Assignment07.Inheritance;
 
 namespace Assignment07
 {
@@ -46,6 +47,13 @@ namespace Assignment07
             Console.WriteLine("After updating delivery fee:");
 
             shipment.PrintShipment();
+
+            #endregion
+            #region Question 4
+
+            // StandardShipment
+            // ExpressShipment
+            // InternationalShipment
 
             #endregion
         }

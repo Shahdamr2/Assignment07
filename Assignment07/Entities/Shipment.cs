@@ -49,8 +49,7 @@ namespace Assignment07.Entities
                 this.deliveryFee = deliveryFee;
             }
         }
-        //
-
+        
         public string TrackingCode
         {
             get { return trackingCode; }
@@ -94,7 +93,7 @@ namespace Assignment07.Entities
 
         public DeliveryAddress Destination { get; set; }
 
-        public decimal EstimatedCost
+        public virtual decimal EstimatedCost
         {
             get { return DeliveryFee + (Weight * 5); }
         }
