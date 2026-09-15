@@ -1,10 +1,11 @@
-﻿using Assignment07.Entities;
+﻿using System;
+using Assignment07.Entities;
 
 namespace Assignment07.Inheritance
 {
     internal class InternationalShipment : Shipment
     {
-        private string destinationCountry;
+        private string destinationCountry = "Unknown";
         private decimal customsFee;
 
         public InternationalShipment(
@@ -48,6 +49,20 @@ namespace Assignment07.Inheritance
         public override decimal EstimatedCost
         {
             get { return DeliveryFee + (Weight * 5) + CustomsFee; }
+        }
+
+        public override void PrintShipment()
+        {
+            Console.WriteLine("International Shipment");
+            Console.WriteLine();
+
+            Console.WriteLine($"Tracking Code      : {TrackingCode}");
+            Console.WriteLine($"Description        : {Description}");
+            Console.WriteLine($"Weight             : {Weight} KG");
+            Console.WriteLine($"Delivery Fee       : {DeliveryFee} EGP");
+            Console.WriteLine($"Destination Country: {DestinationCountry}");
+            Console.WriteLine($"Customs Fee        : {CustomsFee} EGP");
+            Console.WriteLine($"Estimated Cost     : {EstimatedCost} EGP");
         }
     }
 }

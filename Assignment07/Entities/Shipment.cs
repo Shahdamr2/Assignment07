@@ -24,8 +24,7 @@ namespace Assignment07.Entities
             string description,
             decimal weight,
             decimal deliveryFee,
-            DeliveryAddress destination
-            )
+            DeliveryAddress destination)
         {
             this.trackingCode = string.IsNullOrWhiteSpace(trackingCode) ? "Unknown" : trackingCode;
 
@@ -49,7 +48,7 @@ namespace Assignment07.Entities
                 this.deliveryFee = deliveryFee;
             }
         }
-        
+
         public string TrackingCode
         {
             get { return trackingCode; }
@@ -106,13 +105,12 @@ namespace Assignment07.Entities
             }
         }
 
-        public void PrintShipment()
+        public virtual void PrintShipment()
         {
-            Console.WriteLine($"Tracking Code: {TrackingCode}");
-            Console.WriteLine($"Description: {Description}");
-            Console.WriteLine($"Weight: {Weight} KG");
-            Console.WriteLine($"Delivery Fee: {DeliveryFee} EGP");
-            Console.WriteLine($"Destination: {Destination.GetFullAddress()}");
+            Console.WriteLine($"Tracking Code : {TrackingCode}");
+            Console.WriteLine($"Description   : {Description}");
+            Console.WriteLine($"Weight        : {Weight} KG");
+            Console.WriteLine($"Delivery Fee  : {DeliveryFee} EGP");
             Console.WriteLine($"Estimated Cost: {EstimatedCost} EGP");
         }
     }

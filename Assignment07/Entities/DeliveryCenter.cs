@@ -4,7 +4,7 @@ namespace Assignment07.Entities
 {
     public class DeliveryCenter
     {
-        private Shipment[] shipments;
+        private Shipment?[] shipments;
 
         public string CenterName { get; set; }
 
@@ -12,10 +12,10 @@ namespace Assignment07.Entities
         {
             CenterName = string.IsNullOrWhiteSpace(centerName) ? "Unknown" : centerName;
 
-            shipments = new Shipment[20];
+            shipments = new Shipment?[20];
         }
 
-        public Shipment this[int index]
+        public Shipment? this[int index]
         {
             get
             {
@@ -24,7 +24,7 @@ namespace Assignment07.Entities
                     return shipments[index];
                 }
 
-                return null;
+                return default;
             }
             set
             {
@@ -35,7 +35,7 @@ namespace Assignment07.Entities
             }
         }
 
-        public Shipment this[string trackingCode]
+        public Shipment? this[string trackingCode]
         {
             get
             {
@@ -48,7 +48,7 @@ namespace Assignment07.Entities
                     }
                 }
 
-                return null;
+                return default;
             }
         }
 
@@ -83,13 +83,18 @@ namespace Assignment07.Entities
 
         public void PrintAllShipments()
         {
-            Console.WriteLine($"Delivery Center: {CenterName}");
+            Console.WriteLine("==================================================");
+            Console.WriteLine($"Delivery Center : {CenterName}");
+            Console.WriteLine("==================================================");
 
             for (int i = 0; i < shipments.Length; i++)
             {
                 if (shipments[i] != null)
                 {
                     shipments[i].PrintShipment();
+
+                    Console.WriteLine();
+                    Console.WriteLine("-----------------------------------------------");
                     Console.WriteLine();
                 }
             }

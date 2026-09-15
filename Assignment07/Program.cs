@@ -32,21 +32,21 @@ namespace Assignment07
             #endregion
             #region Question 3
 
-            DeliveryAddress address =
-                new DeliveryAddress("Cairo", "Tahrir Street", 15);
+            //DeliveryAddress address =
+            //    new DeliveryAddress("Cairo", "Tahrir Street", 15);
 
-            Shipment shipment =
-                new Shipment("SH-101", "Laptop", 3, 100, address);
+            //Shipment shipment =
+            //    new Shipment("SH-101", "Laptop", 3, 100, address);
 
-            shipment.PrintShipment();
+            //shipment.PrintShipment();
 
-            Console.WriteLine();
+            //Console.WriteLine();
 
-            shipment.UpdateDeliveryFee(120);
+            //shipment.UpdateDeliveryFee(120);
 
-            Console.WriteLine("After updating delivery fee:");
+            //Console.WriteLine("After updating delivery fee:");
 
-            shipment.PrintShipment();
+            //shipment.PrintShipment();
 
             #endregion
             #region Question 4
@@ -54,6 +54,158 @@ namespace Assignment07
             // StandardShipment
             // ExpressShipment
             // InternationalShipment
+
+            #endregion
+            #region Question 5
+
+            Console.Write("Enter Delivery Center Name: ");
+            string centerName = Console.ReadLine() ?? "Unknown";
+
+            DeliveryCenter center = new DeliveryCenter(centerName);
+
+
+            Console.WriteLine();
+
+            Console.Write("Enter Standard Tracking Code: ");
+            string standardTrackingCode = Console.ReadLine() ?? "Unknown";
+
+            Console.Write("Enter Standard Description: ");
+            string standardDescription = Console.ReadLine() ?? "Unknown";
+
+            Console.Write("Enter Standard Weight: ");
+            decimal standardWeight = decimal.Parse(Console.ReadLine() ?? "0");
+
+            Console.Write("Enter Standard Delivery Fee: ");
+            decimal standardDeliveryFee = decimal.Parse(Console.ReadLine() ?? "0");
+
+            DeliveryAddress standardAddress =
+                new DeliveryAddress("Unknown", "Unknown", 0);
+
+            StandardShipment standardShipment =
+                new StandardShipment(
+                    standardTrackingCode,
+                    standardDescription,
+                    standardWeight,
+                    standardDeliveryFee,
+                    standardAddress);
+
+
+            Console.WriteLine();
+
+            Console.Write("Enter Express Tracking Code: ");
+            string expressTrackingCode = Console.ReadLine() ?? "Unknown";
+
+            Console.Write("Enter Express Description: ");
+            string expressDescription = Console.ReadLine() ?? "Unknown";
+
+            Console.Write("Enter Express Weight: ");
+            decimal expressWeight = decimal.Parse(Console.ReadLine() ?? "0");
+
+            Console.Write("Enter Express Delivery Fee: ");
+            decimal expressDeliveryFee = decimal.Parse(Console.ReadLine() ?? "0");
+
+            Console.Write("Enter Extra Fee: ");
+            decimal extraFee = decimal.Parse(Console.ReadLine() ?? "0");
+
+            DeliveryAddress expressAddress =
+                new DeliveryAddress("Unknown", "Unknown", 0);
+
+            ExpressShipment expressShipment =
+                new ExpressShipment(
+                    expressTrackingCode,
+                    expressDescription,
+                    expressWeight,
+                    expressDeliveryFee,
+                    expressAddress,
+                    extraFee);
+
+
+            Console.WriteLine();
+
+            Console.Write("Enter International Tracking Code: ");
+            string internationalTrackingCode = Console.ReadLine() ?? "Unknown";
+
+            Console.Write("Enter International Description: ");
+            string internationalDescription = Console.ReadLine() ?? "Unknown";
+
+            Console.Write("Enter International Weight: ");
+            decimal internationalWeight = decimal.Parse(Console.ReadLine() ?? "0");
+
+            Console.Write("Enter International Delivery Fee: ");
+            decimal internationalDeliveryFee = decimal.Parse(Console.ReadLine() ?? "0");
+
+            Console.Write("Enter Destination Country: ");
+            string destinationCountry = Console.ReadLine() ?? "Unknown";
+
+            Console.Write("Enter Customs Fee: ");
+            decimal customsFee = decimal.Parse(Console.ReadLine() ?? "0");
+
+            DeliveryAddress internationalAddress =
+                new DeliveryAddress("Unknown", "Unknown", 0);
+
+            InternationalShipment internationalShipment =
+                new InternationalShipment(
+                    internationalTrackingCode,
+                    internationalDescription,
+                    internationalWeight,
+                    internationalDeliveryFee,
+                    internationalAddress,
+                    destinationCountry,
+                    customsFee);
+
+
+            if (center.AddShipment(standardShipment))
+            {
+                Console.WriteLine("Shipment Added Successfully.");
+            }
+
+            if (center.AddShipment(expressShipment))
+            {
+                Console.WriteLine("Shipment Added Successfully.");
+            }
+
+            if (center.AddShipment(internationalShipment))
+            {
+                Console.WriteLine("Shipment Added Successfully.");
+            }
+
+
+            Console.WriteLine();
+
+            center.PrintAllShipments();
+
+
+            Console.WriteLine();
+
+            Console.WriteLine("Enter Tracking Code to Remove:");
+            string removeCode = Console.ReadLine() ?? "";
+
+            if (center.RemoveShipment(removeCode))
+            {
+                Console.WriteLine();
+                Console.WriteLine("Shipment Removed Successfully.");
+            }
+            else
+            {
+                Console.WriteLine();
+                Console.WriteLine("Shipment not found.");
+            }
+
+            Console.WriteLine();
+
+            Console.WriteLine("==========================================");
+            Console.WriteLine("Remaining Shipments");
+            Console.WriteLine("==========================================");
+
+            for (int i = 0; i < 20; i++)
+            {
+                if (center[i] != null)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine($"Tracking Code : {center[i].TrackingCode}");
+                    Console.WriteLine("...");
+                }
+            }
 
             #endregion
         }

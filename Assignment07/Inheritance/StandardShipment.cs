@@ -1,4 +1,5 @@
-﻿using Assignment07.Entities;
+﻿using System;
+using Assignment07.Entities;
 
 namespace Assignment07.Inheritance
 {
@@ -12,6 +13,14 @@ namespace Assignment07.Inheritance
             DeliveryAddress destination)
             : base(trackingCode, description, weight, deliveryFee, destination)
         {
+        }
+
+        public override void PrintShipment()
+        {
+            Console.WriteLine("Standard Shipment");
+            Console.WriteLine();
+
+            base.PrintShipment();
         }
     }
 }
